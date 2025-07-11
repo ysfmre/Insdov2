@@ -469,7 +469,7 @@ def oyun_uret_default(konu):
     }
 
 @app.route("/", methods=["GET", "POST"])
-def index2():
+def index():
     tum_konular = [(s, k) for s, konular in MEB_KAZANIMLARI.items() for k in konular]
     oyun = None
     selected_konu = None
@@ -485,7 +485,7 @@ def index2():
             print("AI üretim hatası:", e)
             oyun = oyun_uret_default(konu)
 
-    return render_template("index2.html", konular=tum_konular, oyun=oyun, selected_konu=selected_konu)
+    return render_template("index.html", konular=tum_konular, oyun=oyun, selected_konu=selected_konu)
 def run_app():
     app.run(debug=True, port=5000)
 
